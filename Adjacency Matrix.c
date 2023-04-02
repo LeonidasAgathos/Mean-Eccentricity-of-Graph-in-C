@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define n 6
+#define n 6  // define number of nodes in the graph
 #define MAXNUM 65555
 
 #define FALSE 0
 #define TRUE 1
-#include "bfs1.h"
+#include "Breadth First Search.h"
 
 
 
@@ -18,11 +18,11 @@ int main(){
  int max[n];
  float sum;
  float mean_ecc;
- for(i=0;i<n;i++){ //αρχικοποίηση πίνακα αποστάσεων στο άπειρο 
+ for(i=0;i<n;i++){ //defining the distance matrix to infinity
      dist[i]=MAXNUM;
      for (j=0; j<n; j++)
      
-         if (i==j) // αρχικοποίηση πίνακα γειτνίασης
+         if (i==j) // defining the adjacency matrix
             network[i][j]=0;
          
             else {
@@ -49,9 +49,9 @@ int main(){
     network[3][1]=1; network[3][2]=1;
     network[4][1]=1; network[4][2]=1; 
     network[5][2]=1;
-    for (u=0;u<n;u++){ // κάλεσμα της συνάρτησης για όλους τους n κόμβους
+    for (u=0;u<n;u++){ // calling the function
     bfs1(u,network,dist,max);
-    sum=sum+max[u];   //εύρεση συνολικής εκκεντρότητας
+    sum=sum+max[u];   //finding the total eccentricity
     }
      mean_ecc=sum/n;
      printf("Mean eccentricity is :%f",mean_ecc);
