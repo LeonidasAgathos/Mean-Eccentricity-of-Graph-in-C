@@ -1,3 +1,4 @@
+//implementation using Breadth First Search algorithm
 void bfs1(int u, int network[n][n],int dist[n],int max[n])
     {
         int w,v,l,onScanQ[n], ScanQ[n],ecc[n], Qsize=0, k,sum,longest_path;
@@ -16,19 +17,19 @@ void bfs1(int u, int network[n][n],int dist[n],int max[n])
          Qsize=1;
          k=1;
          l=0;
-         printf("\n BFS has started examining :\n");
+         printf("\n BFS has started examining :\n"); //starts and examining the queued nodes
          do{ 
         v=ScanQ[k];
         printf(" %d ",v);
             for (w=0;w<n;w++)
-                if ((network[v][w]<MAXNUM)&&(!onScanQ[w])) // αν το στοιχείο έχει τιμή μικρότερη του άπειρου και δεν είναι προς έλεγχο
+                if ((network[v][w]<MAXNUM)&&(!onScanQ[w]))  
                 {   
                     Qsize++;          
                     ScanQ[Qsize]=w;         
                     onScanQ[w]=TRUE;
                     dist[w]=dist[v]+1;
                     printf("(%d)",w);
-                    if (dist[w]>longest_path)     //έλεγχος για την εύρεση του longest path
+                    if (dist[w]>longest_path)     // finding the longest path 
                     {
                        longest_path=dist[w];
                        
